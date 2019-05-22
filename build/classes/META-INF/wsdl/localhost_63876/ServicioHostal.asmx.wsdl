@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="loginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProveedor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="perfil" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rubro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProveedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateProveedorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEmpleados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="perfil" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cargo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEmpleadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateEmpleadosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="perfil" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateEmpresaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="loginSoapIn">
+    <wsdl:part name="parameters" element="tns:login" />
+  </wsdl:message>
+  <wsdl:message name="loginSoapOut">
+    <wsdl:part name="parameters" element="tns:loginResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateProveedorSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateProveedor" />
+  </wsdl:message>
+  <wsdl:message name="CreateProveedorSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEmpleadosSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEmpleados" />
+  </wsdl:message>
+  <wsdl:message name="CreateEmpleadosSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEmpleadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="CreateEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioHostalSoap">
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:loginSoapIn" />
+      <wsdl:output message="tns:loginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProveedor">
+      <wsdl:input message="tns:CreateProveedorSoapIn" />
+      <wsdl:output message="tns:CreateProveedorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmpleados">
+      <wsdl:input message="tns:CreateEmpleadosSoapIn" />
+      <wsdl:output message="tns:CreateEmpleadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmpresa">
+      <wsdl:input message="tns:CreateEmpresaSoapIn" />
+      <wsdl:output message="tns:CreateEmpresaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioHostalSoap" type="tns:ServicioHostalSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="login">
+      <soap:operation soapAction="http://tempuri.org/login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProveedor">
+      <soap:operation soapAction="http://tempuri.org/CreateProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmpleados">
+      <soap:operation soapAction="http://tempuri.org/CreateEmpleados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmpresa">
+      <soap:operation soapAction="http://tempuri.org/CreateEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioHostalSoap12" type="tns:ServicioHostalSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="login">
+      <soap12:operation soapAction="http://tempuri.org/login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProveedor">
+      <soap12:operation soapAction="http://tempuri.org/CreateProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmpleados">
+      <soap12:operation soapAction="http://tempuri.org/CreateEmpleados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/CreateEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioHostal">
+    <wsdl:port name="ServicioHostalSoap" binding="tns:ServicioHostalSoap">
+      <soap:address location="http://localhost:63876/ServicioHostal.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioHostalSoap12" binding="tns:ServicioHostalSoap12">
+      <soap12:address location="http://localhost:63876/ServicioHostal.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
